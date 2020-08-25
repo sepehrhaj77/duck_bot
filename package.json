@@ -1,0 +1,20 @@
+{
+  "name": "duck_facts",
+  "version": "1.0.0",
+  "description": "A bot that responds with a duck fact when pinged, and now so much more",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "Sepehr Hajbarat",
+  "license": "ISC",
+  "dependencies": {
+    "@discordjs/opus": "^0.3.2",
+    "discord.js": "^12.2.0",
+    "eslint": "^7.6.0",
+    "ffmpeg-static": "^4.2.6"
+  },
+  "engines": {
+    "node": "12.x"
+  }
+}
