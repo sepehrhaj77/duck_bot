@@ -10,5 +10,6 @@ exports.commands = [
     'I also have a friend bot with his own commands:',
     '!phreak - quadra kill?',
     '!sion - plays one of Sion\'s various ult sounds',
-    '!rl - This is rocket league'
+    '!rl - This is rocket league',
+    '!bruh - bruh'
 ];
