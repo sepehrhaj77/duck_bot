@@ -11,5 +11,7 @@ exports.commands = [
     '!phreak - quadra kill?',
     '!sion - plays one of Sion\'s various ult sounds',
     '!rl - This is rocket league',
-    '!bruh - bruh'
+    '!bruh - bruh',
+    '!mana - YOU HAVE NO MANA',
+    '!faker - FAKER WHAT WAS THAT'
 ];
