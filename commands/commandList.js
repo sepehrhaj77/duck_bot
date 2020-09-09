@@ -13,5 +13,6 @@ exports.commands = [
     '!rl - This is rocket league',
     '!bruh - bruh',
     '!mana - YOU HAVE NO MANA',
-    '!faker - FAKER WHAT WAS THAT'
+    '!faker - FAKER WHAT WAS THAT',
+    '!borat - very nice!'
 ];
