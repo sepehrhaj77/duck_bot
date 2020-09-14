@@ -7,7 +7,8 @@ const {commands} = require('./commands/commandList');
 const {getRandomAdvice} = require('./commands/advice');
 const { OpusEncoder } = require('@discordjs/opus');
 const { quack } = require('./commands/quack');
-const prefix = process.env.prefix;
+var prefix = process.env.prefix;
+const {prefixLocal, TOKEN} = require('./config.json');
 
 
 // when the client is ready, run this code
@@ -21,7 +22,13 @@ client.once('ready', () => {
 const encoder = new OpusEncoder(48000, 2);
 
 // login to Discord with your app's token
-client.login(process.env.TOKEN);
+if(process.env.TOKEN){
+    client.login(process.env.TOKEN);
+}
+else{
+    client.login(TOKEN);
+    prefix = prefixLocal;
+}
 
 // whenever a message is sent
 client.on('message', async message => {
