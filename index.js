@@ -7,6 +7,15 @@ const {commands} = require('./commands/commandList');
 const {getRandomAdvice} = require('./commands/advice');
 const { OpusEncoder } = require('@discordjs/opus');
 const { quack } = require('./commands/quack');
+const { phreak } = require('./commands/phreak');
+const { sion } = require('./commands/sion');
+const { rl } = require('./commands/rl');
+const { bruh } = require('./commands/bruh');
+const { jeff } = require('./commands/jeff');
+const { faker } = require('./commands/faker');
+const { mana } = require('./commands/mana');
+const { borat } = require('./commands/borat');
+
 var prefix = process.env.prefix;
 const {prefixLocal, TOKEN} = require('./config.json');
 
@@ -63,7 +72,7 @@ client.on('message', async message => {
     //jeff
     else if (command === 'jeff'){
         //name jeff
-        message.channel.send('name jeff');
+        jeff(message);
     }   
 
     //lolAdvice
@@ -74,6 +83,40 @@ client.on('message', async message => {
     //quack
     else if (command === 'quack'){
         quack(message);
+    }
+    else //phreak
+    if (command === 'phreak'){
+        phreak(message);
+    }
+
+    //sion ult
+    else if (command === 'sion'){
+        sion(message);
+    }
+
+    //this is rocket league
+    else if (command === 'rl'){
+        rl(message);
+    }
+
+    //bruh
+    else if (command === 'bruh'){
+        bruh(message);
+    }
+
+    //faker
+    else if (command === 'faker'){
+        faker(message);
+    }
+
+    //no mana
+    else if (command === 'mana'){
+        mana(message);
+    }
+
+    //borat very nice
+    else if (command === 'borat'){
+        borat(message);
     }
 
     
