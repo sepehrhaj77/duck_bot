@@ -17,7 +17,7 @@ const { mana } = require('./commands/mana');
 const { borat } = require('./commands/borat');
 
 var prefix = process.env.prefix;
-const {prefixLocal, TOKEN} = require('./config.json');
+
 
 
 // when the client is ready, run this code
@@ -35,6 +35,7 @@ if(process.env.TOKEN){
     client.login(process.env.TOKEN);
 }
 else{
+    const {prefixLocal, TOKEN} = require('./config.json');
     client.login(TOKEN);
     prefix = prefixLocal;
 }
