@@ -1,5 +1,6 @@
 const Discord = require('discord.js')
 const client = new Discord.Client()
+const axios = require('axios')
 
 const { getRandomFact } = require('./commands/facts')
 const { getRandomInsult } = require('./commands/insults')
@@ -122,9 +123,12 @@ client.on('message', async (message) => {
 	//random dad joke
 	else if (command === 'dadjoke') {
 		try {
-			await dadJoke(message)
-		} catch (error) {
-			console.log(error)
+			const config = { headers: { Accept: 'application/json' } }
+			const res = await axios.get('https://icanhazdadjoke.com/', config)
+			message.channel.send(res.data.joke)
+		} catch (e) {
+			console.log('The error is: ', e)
+			message.channel.send('this shit aint working. i give up')
 		}
 	}
 })
