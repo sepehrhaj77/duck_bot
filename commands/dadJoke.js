@@ -4,14 +4,11 @@ const getJoke = async () => {
 	try {
 		const config = {
 			headers: {
-				Accept: 'application/json',
+				Accept: 'text/plain',
 			},
 		}
 		const res = await axios.get('https://icanhazdadjoke.com/', config)
-		if (!res) {
-			throw 'no response'
-		}
-		return res.data.joke
+		return res
 	} catch (e) {
 		console.log(e)
 	}
