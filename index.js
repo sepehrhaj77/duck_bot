@@ -121,6 +121,7 @@ client.on('message', async (message) => {
 
 	//random dad joke
 	else if (command === 'dadjoke') {
-		message.channel.send(dadJoke())
+		console.log(dadJoke())
+		// message.channel.send(dadJoke())
 	}
 })
