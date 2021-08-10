@@ -119,16 +119,4 @@ client.on('message', async (message) => {
 	else if (command === 'borat') {
 		borat(message)
 	}
-
-	//random dad joke
-	else if (command === 'dadjoke') {
-		try {
-			const config = { headers: { Accept: 'application/json' } }
-			const res = await axios.get('https://icanhazdadjoke.com/', config)
-			message.channel.send(res.data.joke)
-		} catch (e) {
-			console.log('The error is: ', e)
-			message.channel.send('this shit aint working. i give up')
-		}
-	}
 })

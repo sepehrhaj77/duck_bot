@@ -13,5 +13,4 @@ exports.commands = [
 	'!mana - YOU HAVE NO MANA',
 	'!faker - FAKER WHAT WAS THAT',
 	'!borat - very nice!',
-	'!dadJoke - I will tell you a random dad joke',
 ]
