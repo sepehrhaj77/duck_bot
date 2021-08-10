@@ -1,13 +1,7 @@
 const axios = require('axios')
 
-exports.dadJoke = () => {
+exports.dadJoke = async () => {
 	const config = { headers: { Accept: 'application/json' } }
-	console.log(
-		axios
-			.get('https://icanhazdadjoke.com/', config)
-			.then((data) => {
-				console.log(data.data.joke)
-			})
-			.catch((e) => console.log(e))
-	)
+	const res = await axios.get('https://icanhazdadjoke.com/', config)
+	return res.data.joke
 }
