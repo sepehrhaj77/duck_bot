@@ -8,6 +8,7 @@ const getJoke = async () => {
 			},
 		}
 		const res = await axios.get('https://icanhazdadjoke.com/', config)
+		console.log(res)
 		return res
 	} catch (e) {
 		console.log(e)
