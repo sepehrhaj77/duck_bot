@@ -122,8 +122,7 @@ client.on('message', async (message) => {
 	//random dad joke
 	else if (command === 'dadjoke') {
 		try {
-			const result = await dadJoke()
-			message.channel.send(result)
+			await dadJoke(message)
 		} catch (error) {
 			console.log(error)
 		}
