@@ -1,6 +1,5 @@
 const Discord = require('discord.js')
 const client = new Discord.Client()
-const axios = require('axios')
 
 const { getRandomFact } = require('./commands/facts')
 const { getRandomInsult } = require('./commands/insults')
@@ -118,5 +117,10 @@ client.on('message', async (message) => {
 	//borat very nice
 	else if (command === 'borat') {
 		borat(message)
+	}
+
+	//dad joke
+	else if (command === 'dadjoke') {
+		message.channel.send(dadJoke())
 	}
 })
