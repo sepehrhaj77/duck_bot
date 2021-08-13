@@ -10,7 +10,7 @@ exports.dadJoke = async () => {
 			},
 		}
 		const res = await axios.get('https://icanhazdadjoke.com/', config)
-		console.log(res)
+		console.log(res.data)
 		return res.data.joke
 	} catch (e) {
 		console.log('error: ', e)
