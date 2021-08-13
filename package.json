@@ -14,7 +14,8 @@
     "discord.js": "^12.2.0",
     "eslint": "^7.6.0",
     "ffmpeg-static": "^4.2.6",
-    "give-me-a-joke": "^0.5.1"
+    "give-me-a-joke": "^0.5.1",
+    "node-fetch": "^2.6.1"
   },
   "engines": {
     "node": "12.x"

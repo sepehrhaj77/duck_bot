@@ -1,10 +1,7 @@
-let dadJoke = require('give-me-a-joke')
+const fetch = require('node-fetch')
 
-exports.dadJoke = () => {
-	console.log('Starting dadjoke()...')
-	dadJoke.getRandomDadJoke(function (joke) {
-		console.log('calling joke()...')
-		console.log(joke())
-		return joke()
-	})
+exports.dadJoke = (message) => {
+	fetch('https://icanhazdadjoke.com/')
+		.then((res) => res.json())
+		.then((data) => message.channel.send(data))
 }
