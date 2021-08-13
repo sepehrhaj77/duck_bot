@@ -1,4 +1,4 @@
-const dadJoke = require('give-me-a-joke')
+let dadJoke = require('give-me-a-joke')
 
 exports.dadJoke = () => {
 	dadJoke.getRandomDadJoke(function (joke) {
