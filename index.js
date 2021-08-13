@@ -121,6 +121,6 @@ client.on('message', async (message) => {
 
 	//dad joke
 	else if (command === 'dadjoke') {
-		await message.channel.send(async () => await dadJoke())
+		dadJoke().then((data) => message.channel.send(data))
 	}
 })
