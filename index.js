@@ -16,6 +16,7 @@ const { faker } = require('./commands/faker')
 const { mana } = require('./commands/mana')
 const { borat } = require('./commands/borat')
 const { dadJoke } = require('./commands/dadJoke')
+const { gay } = require('./commands/whyGay')
 
 var prefix = process.env.prefix
 
@@ -39,7 +40,7 @@ if (process.env.TOKEN) {
 }
 
 // whenever a message is sent
-client.on('message', async (message) => {
+client.on('message', async message => {
 	//if the message doesn't begin with '!' or it is from a bot account, do not consider it as a possible command
 	if (!message.content.startsWith(prefix) || message.author.bot) return
 
@@ -56,9 +57,7 @@ client.on('message', async (message) => {
 	}
 	//server info
 	else if (command === 'server') {
-		message.channel.send(
-			`Server name: ${message.guild.name}\nTotal members: ${message.guild.memberCount}`
-		)
+		message.channel.send(`Server name: ${message.guild.name}\nTotal members: ${message.guild.memberCount}`)
 	}
 	//fact
 	else if (command === 'fact') {
@@ -121,6 +120,11 @@ client.on('message', async (message) => {
 
 	//dad joke
 	else if (command === 'dadjoke') {
-		dadJoke().then((data) => message.channel.send(data))
+		dadJoke().then(data => message.channel.send(data))
+	}
+
+	//why are you gay
+	else if (command === 'gay') {
+		gay(message)
 	}
 })
