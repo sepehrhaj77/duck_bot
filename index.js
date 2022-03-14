@@ -17,6 +17,7 @@ const { mana } = require('./commands/mana')
 const { borat } = require('./commands/borat')
 const { dadJoke } = require('./commands/dadJoke')
 const { gay } = require('./commands/whyGay')
+const { crickets } = require('./commands/crickets')
 
 var prefix = process.env.prefix
 
@@ -126,5 +127,10 @@ client.on('message', async message => {
 	//why are you gay
 	else if (command === 'gay') {
 		gay(message)
+	}
+
+	//crickets
+	else if (command === 'crickets') {
+		crickets(message)
 	}
 })

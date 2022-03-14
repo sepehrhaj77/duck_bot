@@ -1,15 +1,10 @@
-const soundNames = ['Sion.R1.mp3', 'Sion.R2.mp3', 'Sion.R3.mp3', 'Sion.R4.mp3', 'Sion.R5.mp3', 'Sion.R6.mp3', 'Sion.R7.mp3', 'Sion.R8.mp3', 'Sion.R9.mp3', 'Sion.R10.mp3']
-
-exports.sion = async message => {
+exports.crickets = async message => {
 	const channel = message.member.voice.channel
 	if (channel) {
 		const connection = await message.member.voice.channel.join()
-
-		var soundName = soundNames[Math.floor(Math.random() * soundNames.length)]
-
-		const dispatcher = connection.play(`./commands/sionSounds/${soundName}`)
+		const dispatcher = connection.play('./crickets.mp3')
 		dispatcher.on('start', () => {
-			dispatcher.setVolume(0.1)
+			dispatcher.setVolume(0.5)
 		})
 		dispatcher.on('finish', () => {
 			connection.disconnect()

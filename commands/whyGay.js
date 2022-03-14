@@ -5,10 +5,8 @@ exports.gay = async message => {
 		const dispatcher = connection.play('./whyAreyougayTrim.mp3')
 		dispatcher.on('start', () => {
 			dispatcher.setVolume(0.5)
-			console.log('rocketLeague.mp3 is now playing!')
 		})
 		dispatcher.on('finish', () => {
-			console.log('rocketLeague.mp3 has finished playing!')
 			connection.disconnect()
 		})
 		// Always remember to handle errors appropriately!
