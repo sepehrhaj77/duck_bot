@@ -14,4 +14,7 @@ exports.commands = [
 	'!faker - FAKER WHAT WAS THAT',
 	'!borat - very nice!',
 	'!dadJoke - gives you a dad joke',
+	'!gay - why are you gay',
+	'!crickets - as you might expect, cricket sounds',
+	'!ornn - ORNNNNNNNNNNNNNNNNNNNNNNNN',
 ]
