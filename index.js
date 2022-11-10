@@ -86,7 +86,7 @@ client.on('message', async message => {
 	else if (command === 'quack') {
 		quack(message)
 	} //phreak
-	else if (command === 'phreak') {
+	else if (command === 'phreak' || command === 'quadra') {
 		phreak(message)
 	}
 
