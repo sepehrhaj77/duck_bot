@@ -2,7 +2,7 @@ exports.okay = async message => {
 	const channel = message.member.voice.channel
 	if (channel) {
 		const connection = await message.member.voice.channel.join()
-		const dispatcher = connection.play('./okay.mp3')
+		const dispatcher = connection.play('./hi-okay.mp3')
 		dispatcher.on('start', () => {
 			dispatcher.setVolume(1.0)
 		})
