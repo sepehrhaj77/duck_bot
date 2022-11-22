@@ -19,6 +19,7 @@ const { dadJoke } = require('./commands/dadJoke')
 const { gay } = require('./commands/whyGay')
 const { crickets } = require('./commands/crickets')
 const { groupOrnn } = require('./commands/groupOrnn')
+const { okay } = require('./commands/okay')
 
 var prefix = process.env.prefix
 
@@ -138,5 +139,10 @@ client.on('message', async message => {
 	//ornnnnnnnnnnnnnnnn
 	else if (command === 'ornn') {
 		groupOrnn(message)
+	}
+
+	//ok
+	else if (command === 'ok') {
+		okay(message)
 	}
 })
