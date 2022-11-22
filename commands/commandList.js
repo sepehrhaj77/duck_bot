@@ -17,4 +17,5 @@ exports.commands = [
 	'!gay - why are you gay',
 	'!crickets - as you might expect, cricket sounds',
 	'!ornn - ORNNNNNNNNNNNNNNNNNNNNNNNN',
+	'!ok - Hi! ...okay',
 ]
