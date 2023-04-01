@@ -1,5 +1,4 @@
-const Discord = require('discord.js')
-const client = new Discord.Client()
+const { Client, GatewayIntentBits, Partials } = require('discord.js')
 
 const { getRandomFact } = require('./commands/facts')
 const { getRandomInsult } = require('./commands/insults')
@@ -20,8 +19,26 @@ const { gay } = require('./commands/whyGay')
 const { crickets } = require('./commands/crickets')
 const { groupOrnn } = require('./commands/groupOrnn')
 const { okay } = require('./commands/okay')
+const { kys } = require('./commands/lowTierGod')
+const { coming } = require('./commands/coming')
+const { widePutin } = require('./commands/widePutin')
+const { imBack } = require('./commands/imBack')
+const { nice } = require('./commands/nice')
+
+const client = new Client({
+	intents: [
+		GatewayIntentBits.DirectMessages,
+		GatewayIntentBits.Guilds,
+		GatewayIntentBits.GuildBans,
+		GatewayIntentBits.GuildMessages,
+		GatewayIntentBits.MessageContent,
+		GatewayIntentBits.GuildVoiceStates,
+	],
+	partials: [Partials.Channel],
+})
 
 var prefix = process.env.prefix
+var lastSound = null
 
 // when the client is ready, run this code
 // this event will only trigger one time after logging in
@@ -43,7 +60,10 @@ if (process.env.TOKEN) {
 }
 
 // whenever a message is sent
-client.on('message', async message => {
+client.on('messageCreate', async message => {
+	if (message.author.username.toLowerCase().includes('rye')) {
+		message.channel.send("you're stupid. stop spamming me")
+	}
 	//if the message doesn't begin with '!' or it is from a bot account, do not consider it as a possible command
 	if (!message.content.startsWith(prefix) || message.author.bot) return
 
@@ -127,7 +147,7 @@ client.on('message', async message => {
 	}
 
 	//why are you gay
-	else if (command === 'gay') {
+	else if (command === 'gay' || command === 'gey') {
 		gay(message)
 	}
 
@@ -142,7 +162,32 @@ client.on('message', async message => {
 	}
 
 	//ok
-	else if (command === 'ok') {
+	else if (command === 'ok' || command === 'okay') {
 		okay(message)
+	}
+
+	//kys
+	else if (command === 'kys') {
+		kys(message)
+	}
+
+	//coming
+	else if (command === 'coming') {
+		coming(message)
+	}
+
+	//widePutin
+	else if (command === 'wideputin') {
+		widePutin(message)
+	}
+
+	//im back baby
+	else if (command === 'imback') {
+		lastSound = await imBack(message, lastSound)
+	}
+
+	//nice
+	else if (command === 'nice' || command === '69') {
+		nice(message)
 	}
 })

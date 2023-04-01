@@ -9,13 +9,16 @@
   "author": "Sepehr Hajbarat",
   "license": "ISC",
   "dependencies": {
-    "@discordjs/opus": "^0.3.2",
+    "@discordjs/opus": "github:discordjs/opus",
+    "@discordjs/voice": "^0.15.0",
     "axios": "^0.21.1",
-    "discord.js": "^12.2.0",
+    "discord.js": "^14.8.0",
     "eslint": "^7.6.0",
     "ffmpeg-static": "^4.2.6",
     "give-me-a-joke": "^0.5.1",
-    "node-fetch": "^2.6.1"
+    "libsodium-wrappers": "^0.7.11",
+    "node-fetch": "^2.6.1",
+    "node-sass": "^4.14.1"
   },
   "engines": {
     "node": "12.x"

@@ -18,4 +18,9 @@ exports.commands = [
 	'!crickets - as you might expect, cricket sounds',
 	'!ornn - ORNNNNNNNNNNNNNNNNNNNNNNNN',
 	'!ok - Hi! ...okay',
+	'!kys - what you think it is, but dramatic af',
+	'!coming = Im coming',
+	"!widePutin - he's here",
+	"!imBack - I'm back baby",
+	'!nice - nice',
 ]
