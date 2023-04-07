@@ -5,25 +5,11 @@ const { getRandomInsult } = require('./commands/insults')
 const { commands } = require('./commands/commandList')
 const { getRandomAdvice } = require('./commands/advice')
 const { OpusEncoder } = require('@discordjs/opus')
-const { quack } = require('./commands/quack')
-const { phreak } = require('./commands/phreak')
 const { sion } = require('./commands/sion')
-const { rl } = require('./commands/rl')
-const { bruh } = require('./commands/bruh')
-const { jeff } = require('./commands/jeff')
-const { faker } = require('./commands/faker')
-const { mana } = require('./commands/mana')
-const { borat } = require('./commands/borat')
 const { dadJoke } = require('./commands/dadJoke')
-const { gay } = require('./commands/whyGay')
-const { crickets } = require('./commands/crickets')
-const { groupOrnn } = require('./commands/groupOrnn')
-const { okay } = require('./commands/okay')
-const { kys } = require('./commands/lowTierGod')
-const { coming } = require('./commands/coming')
-const { widePutin } = require('./commands/widePutin')
 const { imBack } = require('./commands/imBack')
-const { nice } = require('./commands/nice')
+const { bruh } = require('./commands/bruh')
+const { playSound } = require('./commands/playSoundTemplate')
 
 const client = new Client({
 	intents: [
@@ -92,23 +78,10 @@ client.on('messageCreate', async message => {
 		const user = message.mentions.users.first()
 		message.channel.send(user.username + getRandomInsult())
 	}
-	//jeff
-	else if (command === 'jeff') {
-		//name jeff
-		jeff(message)
-	}
 
 	//lolAdvice
 	else if (command === 'loladvice') {
 		message.channel.send(getRandomAdvice())
-	}
-
-	//quack
-	else if (command === 'quack') {
-		quack(message)
-	} //phreak
-	else if (command === 'phreak' || command === 'quadra') {
-		phreak(message)
 	}
 
 	//sion ult
@@ -116,69 +89,9 @@ client.on('messageCreate', async message => {
 		sion(message)
 	}
 
-	//this is rocket league
-	else if (command === 'rl') {
-		rl(message)
-	}
-
-	//bruh
-	else if (command === 'bruh') {
-		bruh(message)
-	}
-
-	//faker
-	else if (command === 'faker') {
-		faker(message)
-	}
-
-	//no mana
-	else if (command === 'mana') {
-		mana(message)
-	}
-
-	//borat very nice
-	else if (command === 'borat') {
-		borat(message)
-	}
-
 	//dad joke
 	else if (command === 'dadjoke') {
 		dadJoke().then(data => message.channel.send(data))
-	}
-
-	//why are you gay
-	else if (command === 'gay' || command === 'gey') {
-		gay(message)
-	}
-
-	//crickets
-	else if (command === 'crickets') {
-		crickets(message)
-	}
-
-	//ornnnnnnnnnnnnnnnn
-	else if (command === 'ornn') {
-		groupOrnn(message)
-	}
-
-	//ok
-	else if (command === 'ok' || command === 'okay') {
-		okay(message)
-	}
-
-	//kys
-	else if (command === 'kys') {
-		kys(message)
-	}
-
-	//coming
-	else if (command === 'coming') {
-		coming(message)
-	}
-
-	//widePutin
-	else if (command === 'wideputin') {
-		widePutin(message)
 	}
 
 	//im back baby
@@ -186,8 +99,8 @@ client.on('messageCreate', async message => {
 		lastSound = await imBack(message, lastSound)
 	}
 
-	//nice
-	else if (command === 'nice' || command === '69') {
-		nice(message)
+	//just play sound file
+	else {
+		playSound(message, './sounds/' + command + '.mp3', 1)
 	}
 })
