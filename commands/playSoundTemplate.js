@@ -21,7 +21,8 @@ exports.playSound = async (message, fileName, volume) => {
 		try {
 			const connection = await connectToChannel(message)
 			const player = createAudioPlayer({})
-			const resource = createAudioResource(fileName)
+			const resource = createAudioResource(fileName, { inlineVolume: true })
+			resource.volume.setVolume(volume)
 			player.play(resource)
 			connection.subscribe(player)
 		} catch (error) {

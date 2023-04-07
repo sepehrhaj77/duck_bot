@@ -6,7 +6,7 @@ exports.commands = [
 	'!jeff - name jeff',
 	'!lolAdvice - gives useful information on how to climb',
 	'!quack - make me quack',
-	'!phreak - quadra kill?',
+	'!quadra - QUAAAAAAAAAAADRA KILLLLL',
 	"!sion - plays one of Sion's various ult sounds",
 	'!rl - This is rocket league',
 	'!bruh - bruh',

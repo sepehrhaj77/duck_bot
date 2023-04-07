@@ -8,7 +8,6 @@ const { OpusEncoder } = require('@discordjs/opus')
 const { sion } = require('./commands/sion')
 const { dadJoke } = require('./commands/dadJoke')
 const { imBack } = require('./commands/imBack')
-const { bruh } = require('./commands/bruh')
 const { playSound } = require('./commands/playSoundTemplate')
 
 const client = new Client({
@@ -25,6 +24,25 @@ const client = new Client({
 
 var prefix = process.env.prefix
 var lastSound = null
+
+// Set volume of each file
+var soundVols = new Map()
+soundVols.set('borat', 1)
+soundVols.set('bruh', 1)
+soundVols.set('coming', 0.9)
+soundVols.set('crickets', 0.5)
+soundVols.set('faker', 0.9)
+soundVols.set('gay', 0.7)
+soundVols.set('hydration', 0.6)
+soundVols.set('jeff', 1)
+soundVols.set('kys', 0.5)
+soundVols.set('mana', 0.1)
+soundVols.set('nice', 2)
+soundVols.set('ok', 2)
+soundVols.set('ornn', 0.05)
+soundVols.set('quadra', 2)
+soundVols.set('rl', 1)
+soundVols.set('wideputin', 0.5)
 
 // when the client is ready, run this code
 // this event will only trigger one time after logging in
@@ -101,6 +119,6 @@ client.on('messageCreate', async message => {
 
 	//just play sound file
 	else {
-		playSound(message, './sounds/' + command + '.mp3', 1)
+		playSound(message, './sounds/' + command + '.mp3', soundVols.get(`${command}`))
 	}
 })
