@@ -23,4 +23,5 @@ exports.commands = [
 	"!widePutin - he's here",
 	"!imBack - I'm back baby",
 	'!nice - nice',
+	'!cum - trump cummin',
 ]

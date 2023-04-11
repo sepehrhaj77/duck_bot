@@ -1,22 +1,8 @@
-const soundNames = ['Sion.R1.mp3', 'Sion.R2.mp3', 'Sion.R3.mp3', 'Sion.R4.mp3', 'Sion.R5.mp3', 'Sion.R6.mp3', 'Sion.R7.mp3', 'Sion.R8.mp3', 'Sion.R9.mp3', 'Sion.R10.mp3']
+const soundNames = ['Sion_R1.mp3', 'Sion_R2.mp3', 'Sion_R3.mp3', 'Sion_R4.mp3', 'Sion_R5.mp3', 'Sion_R6.mp3', 'Sion_R7.mp3', 'Sion_R8.mp3', 'Sion_R9.mp3', 'Sion_R10.mp3']
+
+const { playSound } = require('./playSoundTemplate')
 
 exports.sion = async message => {
-	const channel = message.member.voice.channel
-	if (channel) {
-		const connection = await message.member.voice.channel.join()
-
-		var soundName = soundNames[Math.floor(Math.random() * soundNames.length)]
-
-		const dispatcher = connection.play(`./commands/sionSounds/${soundName}`)
-		dispatcher.on('start', () => {
-			dispatcher.setVolume(0.1)
-		})
-		dispatcher.on('finish', () => {
-			connection.disconnect()
-		})
-		// Always remember to handle errors appropriately!
-		dispatcher.on('error', console.error)
-	} else {
-		message.reply('You must be in a voice channel to use this command!')
-	}
+	var soundName = soundNames[Math.floor(Math.random() * soundNames.length)]
+	await playSound(message, './sounds/sionSounds/' + soundName, 0.1)
 }

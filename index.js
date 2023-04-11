@@ -43,6 +43,7 @@ soundVols.set('ornn', 0.05)
 soundVols.set('quadra', 2)
 soundVols.set('rl', 1)
 soundVols.set('wideputin', 0.5)
+soundVols.set('cum', 1)
 
 // when the client is ready, run this code
 // this event will only trigger one time after logging in
@@ -66,7 +67,7 @@ if (process.env.TOKEN) {
 // whenever a message is sent
 client.on('messageCreate', async message => {
 	if (message.author.username.toLowerCase().includes('rye')) {
-		message.channel.send("you're stupid. stop spamming me")
+		message.channel.send('Rye' + getRandomInsult())
 	}
 	//if the message doesn't begin with '!' or it is from a bot account, do not consider it as a possible command
 	if (!message.content.startsWith(prefix) || message.author.bot) return
@@ -80,7 +81,7 @@ client.on('messageCreate', async message => {
 	//help
 	if (command === 'help') {
 		message.channel.send('List of commands')
-		message.channel.send(commands)
+		message.channel.send(commands.join('\n'))
 	}
 	//server info
 	else if (command === 'server') {
@@ -115,8 +116,9 @@ client.on('messageCreate', async message => {
 	//im back baby
 	else if (command === 'imback') {
 		lastSound = await imBack(message, lastSound)
+	} else if (command === 'quack') {
+		playSound(message, './sounds/quack.mp3', 1)
 	}
-
 	//just play sound file
 	else {
 		playSound(message, './sounds/' + command + '.mp3', soundVols.get(`${command}`))

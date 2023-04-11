@@ -25,6 +25,7 @@ exports.playSound = async (message, fileName, volume) => {
 			resource.volume.setVolume(volume)
 			player.play(resource)
 			connection.subscribe(player)
+			console.log(fileName)
 		} catch (error) {
 			console.error(error)
 		}
