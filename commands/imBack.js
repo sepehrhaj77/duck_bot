@@ -16,5 +16,13 @@ const { playSound } = require('./playSoundTemplate')
 
 exports.imBack = async (message, lastSound) => {
 	var soundName = soundNames[Math.floor(Math.random() * soundNames.length)]
-	playSound(message, './sounds/benderSounds/' + soundName, 1)
+	if ((lastSound = '')) {
+		playSound(message, './sounds/benderSounds/' + soundName, 1)
+	} else {
+		while (soundName == lastSound) {
+			soundName = soundNames[Math.floor(Math.random() * soundNames.length)]
+		}
+		playSound(message, './sounds/benderSounds/' + soundName, 1)
+	}
+	return soundName
 }

@@ -4,11 +4,14 @@ const { getRandomFact } = require('./commands/facts')
 const { getRandomInsult } = require('./commands/insults')
 const { commands } = require('./commands/commandList')
 const { getRandomAdvice } = require('./commands/advice')
-const { OpusEncoder } = require('@discordjs/opus')
+//const { OpusEncoder } = require('@discordjs/opus')
 const { sion } = require('./commands/sion')
 const { dadJoke } = require('./commands/dadJoke')
 const { imBack } = require('./commands/imBack')
+const { fifty } = require('./commands/fiftyFifty')
 const { playSound } = require('./commands/playSoundTemplate')
+
+const { nicknameGen, incMsgCount } = require('./utilities.js')
 
 const client = new Client({
 	intents: [
@@ -23,12 +26,11 @@ const client = new Client({
 })
 
 var prefix = process.env.prefix
-var lastSound = null
+var lastSound = ''
 
 // Set volume of each file
 var soundVols = new Map()
-soundVols.set('borat', 1)
-soundVols.set('bruh', 1)
+soundVols.set('quack', 1)
 soundVols.set('coming', 0.9)
 soundVols.set('crickets', 0.5)
 soundVols.set('faker', 0.9)
@@ -39,21 +41,19 @@ soundVols.set('kys', 0.5)
 soundVols.set('mana', 0.1)
 soundVols.set('nice', 2)
 soundVols.set('ok', 2)
-soundVols.set('ornn', 0.05)
+soundVols.set('ornn', 0.1)
 soundVols.set('quadra', 2)
-soundVols.set('rl', 1)
-soundVols.set('wideputin', 0.5)
-soundVols.set('cum', 1)
+soundVols.set('wideputin', 0.3)
+soundVols.set('thinputin', 0.3)
+soundVols.set('everyone', 0.7)
+soundVols.set('sadtrombone', 0.6)
+soundVols.set('max', 0.3)
 
 // when the client is ready, run this code
 // this event will only trigger one time after logging in
 client.once('ready', () => {
 	console.log('Ready!')
 })
-
-// Create the encoder.
-// Specify 48kHz sampling rate and 2 channel size.
-const encoder = new OpusEncoder(48000, 2)
 
 // login to Discord with your app's token
 if (process.env.TOKEN) {
@@ -66,61 +66,78 @@ if (process.env.TOKEN) {
 
 // whenever a message is sent
 client.on('messageCreate', async message => {
-	if (message.author.username.toLowerCase().includes('rye')) {
-		message.channel.send('Rye' + getRandomInsult())
-	}
 	//if the message doesn't begin with '!' or it is from a bot account, do not consider it as a possible command
 	if (!message.content.startsWith(prefix) || message.author.bot) return
 
-	//store the users command as an array of strings in 'args'
-	const args = message.content.slice(prefix.length).trim().split(/ +/)
-	//take the first element to determine how to handle the command
-	const command = args.shift().toLowerCase()
+	//deal with riley
+	/* if (message.author.username.toLowerCase().includes('rye')) {
+		//message.channel.send('Rye' + getRandomInsult())
+		totalMsgs++
+		message.channel.send('' + totalMsgs)
+	} */
 
-	//COMMANDS
-	//help
-	if (command === 'help') {
-		message.channel.send('List of commands')
-		message.channel.send(commands.join('\n'))
-	}
-	//server info
-	else if (command === 'server') {
-		message.channel.send(`Server name: ${message.guild.name}\nTotal members: ${message.guild.memberCount}`)
-	}
-	//fact
-	else if (command === 'fact') {
-		message.channel.send(getRandomFact())
-	}
-	//insult
-	else if (command === 'insult') {
-		//figure out which user was mentioned
-		const user = message.mentions.users.first()
-		message.channel.send(user.username + getRandomInsult())
-	}
+	try {
+		//store the users command as an array of strings in 'args'
+		const args = message.content.slice(prefix.length).trim().split(/ +/)
+		//take the first element to determine how to handle the command
+		let command = args.shift().toLowerCase()
 
-	//lolAdvice
-	else if (command === 'loladvice') {
-		message.channel.send(getRandomAdvice())
-	}
+		command = nicknameGen(command)
 
-	//sion ult
-	else if (command === 'sion') {
-		sion(message)
-	}
+		//COMMANDS
+		switch (command) {
+			//help
+			case 'help':
+				message.channel.send(commands.join('\n'))
+				break
+			//server info
+			case 'server':
+				message.channel.send(`Server name: ${message.guild.name}\nTotal members: ${message.guild.memberCount}`)
+				break
+			//fact
+			case 'fact':
+				message.channel.send(getRandomFact())
+				break
+			//insult
+			case 'insult':
+				//figure out which user was mentioned
+				const user = message.mentions.users.first()
+				message.channel.send(user.username + getRandomInsult())
+				break
 
-	//dad joke
-	else if (command === 'dadjoke') {
-		dadJoke().then(data => message.channel.send(data))
-	}
+			//lolAdvice
+			case 'loladvice':
+				message.channel.send(getRandomAdvice())
+				break
 
-	//im back baby
-	else if (command === 'imback') {
-		lastSound = await imBack(message, lastSound)
-	} else if (command === 'quack') {
-		playSound(message, './sounds/quack.mp3', 1)
-	}
-	//just play sound file
-	else {
-		playSound(message, './sounds/' + command + '.mp3', soundVols.get(`${command}`))
+			//sion ult
+			case 'sion':
+				sion(message)
+				break
+
+			//dad joke
+			case 'dadjoke':
+				dadJoke().then(data => message.channel.send(data))
+				break
+
+			//im back baby
+			case 'imback':
+				lastSound = await imBack(message, lastSound)
+				break
+			//50/50 good/bad with my voice
+			case 'fifty':
+				fifty(message)
+				break
+			//just play sound file
+			default:
+				playSound(message, './sounds/' + command + '.mp3', soundVols.get(`${command}`))
+				break
+		}
+		// if success, add to the user's log count
+		incMsgCount(message.author.username.toLowerCase())
+	} catch (err) {
+		console.log(err.name)
+		console.log(err.message)
+		return
 	}
 })

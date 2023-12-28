@@ -15,7 +15,7 @@ async function connectToChannel(message) {
 		throw error
 	}
 }
-exports.playSound = async (message, fileName, volume) => {
+exports.playSound = async (message, fileName, volume = 1) => {
 	const channel = message.member?.voice.channel
 	if (channel) {
 		try {
@@ -31,5 +31,6 @@ exports.playSound = async (message, fileName, volume) => {
 		}
 	} else {
 		message.reply('You must be in a voice channel to use this command!')
+		return -1
 	}
 }
