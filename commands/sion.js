@@ -4,5 +4,5 @@ const { playSound } = require('./playSoundTemplate')
 
 exports.sion = async message => {
 	var soundName = soundNames[Math.floor(Math.random() * soundNames.length)]
-	await playSound(message, './sounds/sionSounds/' + soundName, 0.1)
+	return await playSound(message, './sounds/sionSounds/' + soundName, 0.1)
 }

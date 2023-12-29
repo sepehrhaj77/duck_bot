@@ -83,6 +83,7 @@ client.on('messageCreate', async message => {
 		let command = args.shift().toLowerCase()
 
 		command = nicknameGen(command)
+		success = true
 
 		//COMMANDS
 		switch (command) {
@@ -112,7 +113,7 @@ client.on('messageCreate', async message => {
 
 			//sion ult
 			case 'sion':
-				sion(message)
+				success = await sion(message)
 				break
 
 			//dad joke
@@ -122,19 +123,22 @@ client.on('messageCreate', async message => {
 
 			//im back baby
 			case 'imback':
-				lastSound = await imBack(message, lastSound)
+				success = await imBack(message)
 				break
 			//50/50 good/bad with my voice
 			case 'fifty':
-				fifty(message)
+				success = await fifty(message)
 				break
 			//just play sound file
 			default:
-				playSound(message, './sounds/' + command + '.mp3', soundVols.get(`${command}`))
+				success = await playSound(message, './sounds/' + command + '.mp3', soundVols.get(`${command}`))
 				break
 		}
+
 		// if success, add to the user's log count
-		incMsgCount(message.author.username.toLowerCase())
+		if (success) {
+			incMsgCount(message.author.username.toLowerCase())
+		}
 	} catch (err) {
 		console.log(err.name)
 		console.log(err.message)

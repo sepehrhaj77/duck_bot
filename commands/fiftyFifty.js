@@ -3,5 +3,5 @@ const { playSound } = require('./playSoundTemplate')
 
 exports.fifty = async message => {
 	var soundName = soundNames[Math.floor(Math.random() * soundNames.length)]
-	playSound(message, './sounds/fiftyFifty/' + soundName, 1.5)
+	return await playSound(message, './sounds/fiftyFifty/' + soundName, 1.5)
 }

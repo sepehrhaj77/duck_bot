@@ -26,11 +26,13 @@ exports.playSound = async (message, fileName, volume = 1) => {
 			player.play(resource)
 			connection.subscribe(player)
 			console.log(fileName)
+			return 1
 		} catch (error) {
 			console.error(error)
+			return 0
 		}
 	} else {
 		message.reply('You must be in a voice channel to use this command!')
-		return -1
+		return 0
 	}
 }
