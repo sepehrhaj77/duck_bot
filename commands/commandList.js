@@ -7,6 +7,7 @@ exports.commands = [
 	'!insult @username- I will insult the tagged user',
 	'!lolAdvice - gives useful information on how to climb',
 	'!dadJoke - gives you a dad joke',
+	'!msgCount - displays how many times each user has issued a successful command, starting from 8:00pm 12/29/2023 (have to send a command to be added to the list)',
 	'\n		🔊Soundboard🔊',
 	'!jeff - name jeff  \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t🔑: !jef',
 	'!quack - make me quack\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t🔑: !qak',

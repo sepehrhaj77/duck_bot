@@ -4,6 +4,7 @@ const { getRandomFact } = require('./commands/facts')
 const { getRandomInsult } = require('./commands/insults')
 const { commands } = require('./commands/commandList')
 const { getRandomAdvice } = require('./commands/advice')
+const { msgCount } = require('./commands/msgCount')
 //const { OpusEncoder } = require('@discordjs/opus')
 const { sion } = require('./commands/sion')
 const { dadJoke } = require('./commands/dadJoke')
@@ -111,14 +112,23 @@ client.on('messageCreate', async message => {
 				message.channel.send(getRandomAdvice())
 				break
 
-			//sion ult
-			case 'sion':
-				success = await sion(message)
-				break
-
 			//dad joke
 			case 'dadjoke':
 				dadJoke().then(data => message.channel.send(data))
+				break
+
+			//message count
+			case 'msgcount':
+				let outputString = msgCount()
+
+				if (outputString) message.channel.send(outputString)
+				else message.channel.send('log file likely empty. no entries to display')
+
+				break
+
+			//sion ult
+			case 'sion':
+				success = await sion(message)
 				break
 
 			//im back baby
