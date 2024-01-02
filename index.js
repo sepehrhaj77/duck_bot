@@ -5,7 +5,7 @@ const { getRandomInsult } = require('./commands/insults')
 const { commands } = require('./commands/commandList')
 const { getRandomAdvice } = require('./commands/advice')
 const { msgCount } = require('./commands/msgCount')
-//const { OpusEncoder } = require('@discordjs/opus')
+
 const { sion } = require('./commands/sion')
 const { dadJoke } = require('./commands/dadJoke')
 const { imBack } = require('./commands/imBack')
@@ -15,19 +15,11 @@ const { playSound } = require('./commands/playSoundTemplate')
 const { nicknameGen, incMsgCount } = require('./utilities.js')
 
 const client = new Client({
-	intents: [
-		GatewayIntentBits.DirectMessages,
-		GatewayIntentBits.Guilds,
-		GatewayIntentBits.GuildBans,
-		GatewayIntentBits.GuildMessages,
-		GatewayIntentBits.MessageContent,
-		GatewayIntentBits.GuildVoiceStates,
-	],
+	intents: [GatewayIntentBits.DirectMessages, GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent, GatewayIntentBits.GuildVoiceStates],
 	partials: [Partials.Channel],
 })
 
 var prefix = process.env.prefix
-var lastSound = ''
 
 // Set volume of each file
 var soundVols = new Map()
