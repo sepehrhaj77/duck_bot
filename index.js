@@ -41,6 +41,12 @@ soundVols.set('thinputin', 0.3)
 soundVols.set('everyone', 0.7)
 soundVols.set('sadtrombone', 0.6)
 soundVols.set('max', 0.3)
+soundVols.set('speech', 0.8)
+soundVols.set('sure', 0.8)
+soundVols.set('hype', 0.1)
+soundVols.set('fifty', 1.5)
+soundVols.set('comrade', 0.4)
+soundVols.set('hype2', 0.3)
 
 // when the client is ready, run this code
 // this event will only trigger one time after logging in

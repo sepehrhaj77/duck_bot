@@ -20,6 +20,7 @@ var nicknames = {
 	bak: 'imback',
 	dc: 'dontcare',
 	grag: 'gragas',
+	vb: 'vineboom',
 }
 
 exports.nicknameGen = code => {
