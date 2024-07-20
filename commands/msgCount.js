@@ -2,7 +2,7 @@ const fs = require('fs')
 
 exports.msgCount = function () {
 	try {
-		let output = ''
+		let output = 'Msg count per user since 12/29/23: \n'
 		var data = fs.readFileSync('msgCounts.json', 'utf8')
 		var msgCounts = JSON.parse(data)
 

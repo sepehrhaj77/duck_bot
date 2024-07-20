@@ -1,4 +1,5 @@
 const { joinVoiceChannel, createAudioPlayer, createAudioResource, entersState, StreamType, AudioPlayerStatus, VoiceConnectionStatus } = require('@discordjs/voice')
+const fs = require('fs')
 
 async function connectToChannel(message) {
 	const connection = joinVoiceChannel({
@@ -25,8 +26,13 @@ exports.playSound = async (message, fileName, volume = 1) => {
 			resource.volume.setVolume(volume)
 			player.play(resource)
 			connection.subscribe(player)
-			console.log(fileName)
-			return 1
+
+			if (fs.existsSync(fileName)) {
+				console.log(fileName)
+				return 1
+			} else {
+				return 0
+			}
 		} catch (error) {
 			console.error(error)
 			return 0

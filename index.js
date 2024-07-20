@@ -12,7 +12,8 @@ const { imBack } = require('./commands/imBack')
 const { fifty } = require('./commands/fiftyFifty')
 const { playSound } = require('./commands/playSoundTemplate')
 
-const { nicknameGen, incMsgCount } = require('./utilities.js')
+const { nicknameGen, incMsgUsrCount, incMsgTypeCount } = require('./utilities.js')
+const { msgTypeCount } = require('./commands/msgTypeCount.js')
 
 const client = new Client({
 	intents: [GatewayIntentBits.DirectMessages, GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent, GatewayIntentBits.GuildVoiceStates],
@@ -34,7 +35,7 @@ soundVols.set('kys', 0.5)
 soundVols.set('mana', 0.1)
 soundVols.set('nice', 2)
 soundVols.set('ok', 2)
-soundVols.set('ornn', 0.1)
+soundVols.set('ornn', 0.3)
 soundVols.set('quadra', 2)
 soundVols.set('wideputin', 0.3)
 soundVols.set('thinputin', 0.3)
@@ -124,6 +125,14 @@ client.on('messageCreate', async message => {
 
 				break
 
+			//message type count
+			case 'msgtypecount':
+				let output = msgTypeCount()
+
+				if (output) message.channel.send(output)
+				else message.channel.send('log file likely empty. no entries to display')
+
+				break
 			//sion ult
 			case 'sion':
 				success = await sion(message)
@@ -145,7 +154,8 @@ client.on('messageCreate', async message => {
 
 		// if success, add to the user's log count
 		if (success) {
-			incMsgCount(message.author.username.toLowerCase())
+			incMsgTypeCount(command)
+			incMsgUsrCount(message.author.username.toLowerCase())
 		}
 	} catch (err) {
 		console.log(err.name)
