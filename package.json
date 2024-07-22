@@ -1,27 +1,27 @@
 {
-  "name": "duck_facts",
-  "version": "1.0.0",
-  "description": "A bot that responds with a duck fact when pinged, and now so much more",
-  "main": "index.js",
-  "scripts": {
-    "start": "node index.js"
-  },
-  "author": "Sepehr Hajbarat",
-  "license": "ISC",
-  "dependencies": {
-    "@discordjs/opus": "github:discordjs/opus",
-    "@discordjs/voice": "^0.15.0",
-    "axios": "^0.21.1",
-    "discord.js": "^14.8.0",
-    "eslint": "^7.6.0",
-    "ffmpeg-static": "^4.2.6",
-    "give-me-a-joke": "^0.5.1",
-    "libsodium-wrappers": "^0.7.11",
-    "log4js": "^6.9.1",
-    "node-fetch": "^2.6.1",
-    "node-sass": "^4.14.1"
-  },
-  "engines": {
-    "node": "12.x"
-  }
+	"name": "duck_facts",
+	"version": "1.0.0",
+	"description": "A bot that responds with a duck fact when pinged, and now so much more",
+	"main": "index.js",
+	"scripts": {
+		"start": "node index.js"
+	},
+	"author": "Sepehr Hajbarat",
+	"license": "ISC",
+	"dependencies": {
+		"@discordjs/opus": "github:discordjs/opus",
+		"@discordjs/voice": "^0.15.0",
+		"axios": "^0.21.1",
+		"discord.js": "^14.8.0",
+		"eslint": "^7.6.0",
+		"ffmpeg-static": "^4.2.6",
+		"give-me-a-joke": "^0.5.1",
+		"libsodium-wrappers": "^0.7.11",
+		"log4js": "^6.9.1",
+		"node-fetch": "^2.6.1",
+		"node-sass": "^4.14.1"
+	},
+	"engines": {
+		"node": "20.x"
+	}
 }
